@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->string('password');
-            $table->unsignedBigInteger('cliente_id');  //puede ser cliente o empleado
-            
-            $table->foreign('cliente_id')->references('id')->on('cliente');
-
+            $table->string('password'); 
+            // el cliente o empleado es el que tiene que tener la llave foranea
+            // de usuario jijijij me estaba rompiendo la cabeza con eso 
             $table->timestamps();
         });
     }
