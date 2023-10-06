@@ -28,7 +28,7 @@ class JWTController extends Controller
             // 'apellido' => 'required|string|min:2|max:100',
             'telefono' => 'required',
             'direccion' => 'required',
-            'genero' => 'required',
+            'genero' => 'required|max:1',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|min:6',
         ]);
@@ -101,7 +101,7 @@ class JWTController extends Controller
             // Respuesta
             return response()->json([
                 'status' => true,
-                'message' => 'User successfully logged',
+                'message' => 'Inicio sesión exitoso',
                 'token' => $token,
                 'user' => auth()->user(),
             ]);
@@ -121,7 +121,7 @@ class JWTController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'User successfully logged out'
+            'message' => 'Cierre de sesión exitoso'
         ]);
     }
 
@@ -129,7 +129,7 @@ class JWTController extends Controller
     {
         return response()->json([
             'status' => true,
-            'message' => 'Profile data',
+            'message' => 'Datos del perfil del usuario',
             'user' => auth()->user()
         ]);
 
@@ -143,7 +143,7 @@ class JWTController extends Controller
 
         return response()->json([
             "status" => true,
-            "message" => "New access token generated",
+            "message" => "Nuevo token de acceso generado",
             "token" => $newToken
         ]);
     }
