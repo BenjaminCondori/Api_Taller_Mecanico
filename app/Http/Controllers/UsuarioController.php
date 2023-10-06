@@ -14,7 +14,7 @@ class UsuarioController extends Controller
     {
         //
         $usuarios = Usuario::all();
-        return response()->json($$usuarios);
+        return response()->json($usuarios);
     }
 
     /**
@@ -22,7 +22,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        // aqui ya no va nada juasjuas pinche frontend ojala quede bonito
     }
 
     /**
@@ -30,7 +30,16 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->email = $request->email;
+        $usuario->password = $request->password;
+        $usuario->save();
+        
+        $data = [
+            'message' => 'Usuario creado exitosamente',
+            'usuario' => $usuario
+        ];
+        return response()->json($data);
     }
 
     /**
@@ -38,7 +47,7 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        //
+        return response()->json($usuario);
     }
 
     /**
@@ -46,7 +55,7 @@ class UsuarioController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        //
+        // ojito al frontend
     }
 
     /**
@@ -54,7 +63,16 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $usuario->name = $request->email;
+        $usuario->password = $request->password;
+        $usuario->save();
+
+        
+        $data = [
+            'message' => 'Usuario modificado exitosamente',
+            'usuario' => $usuario
+        ];
+        return response()->json($data);
     }
 
     /**
@@ -62,6 +80,12 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        $usuario->delete();
+        
+        $data = [
+            'message' => 'Usuario modificado exitosamente',
+            'usuario' => $usuario
+        ];
+        return response()->json($data);
     }
 }
