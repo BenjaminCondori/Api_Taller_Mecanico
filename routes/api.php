@@ -19,6 +19,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/usuarios', 'App\Http\Controllers\UsuarioController@index');
+Route::post('/usuarios', 'App\Http\Controllers\UsuarioController@store');
+Route::get('/usuarios/{usuario}', 'App\Http\Controllers\UsuarioController@show');
+Route::put('/usuarios/{usuario}', 'App\Http\Controllers\UsuarioController@update');
+Route::delete('/usuarios/{usuario}', 'App\Http\Controllers\UsuarioController@destroy');
+
 Route::get('/clientes', 'App\Http\Controllers\ClienteController@index');
 Route::post('/clientes', 'App\Http\Controllers\ClienteController@store');
 Route::get('/clientes/{ci}', 'App\Http\Controllers\ClienteController@show');
@@ -35,5 +41,3 @@ Route::group([
     Route::post('/refresh', [JWTController::class, 'refreshToken']);
     Route::post('/profile', [JWTController::class, 'profile']);
 });
-
-
