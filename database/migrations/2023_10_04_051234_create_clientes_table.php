@@ -12,15 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->integer('ci')->primary();
+            $table->id();
+            // $table->integer('ci')->primary();
+            $table->integer('ci')->unique();
             $table->string('nombre');
-            $table->string('genero');
+            $table->string('apellido');
+            $table->char('genero', 1);
             $table->integer('telefono')->nulable();
             $table->string('direccion')->nulable();
             $table->timestamps();
 
             // Definir la clave foránea
-            $table->unsignedBigInteger('user_id'); // Asume que la columna de clave foránea se llama user_id
+            $table->unsignedBigInteger('user_id')->nullable(); // Asume que la columna de clave foránea se llama user_id
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

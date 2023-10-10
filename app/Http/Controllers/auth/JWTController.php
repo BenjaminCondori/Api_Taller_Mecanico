@@ -25,22 +25,26 @@ class JWTController extends Controller
         $request->validate([
             'ci' => 'required|unique:clientes',
             'nombre' => 'required|string|min:2|max:100',
-            // 'apellido' => 'required|string|min:2|max:100',
+            'apellido' => 'required|string|min:2|max:100',
             'telefono' => 'required',
             'direccion' => 'required',
             'genero' => 'required|max:1',
             'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|min:6',
         ]);
 
         try {
-            // Iniciar una transacción de base de datos
-            DB::beginTransaction();
+            // Comprueba si se proporciona un campo 'password' en la solicitud
+            if ($request->has('password')) {
+                $password = Hash::make($request->password);
+            } else {
+                // Si no se proporciona un campo 'password', usa el campo 'ci' como contraseña
+                $password = Hash::make($request->ci);
+            }
 
-            // Crear un nuevo usuario
+            // Crea el usuario con la contraseña determinada
             $user = User::create([
                 'email' => $request->email,
-                'password' => Hash::make($request->password)
+                'password' => $password
             ]);
 
             // Verificar que el usuario se haya creado correctamente
@@ -52,6 +56,7 @@ class JWTController extends Controller
             $cliente = new Cliente([
                 'ci' => $request->ci,
                 'nombre' => $request->nombre,
+                'apellido' => $request->apellido,
                 'telefono' => $request->telefono,
                 'direccion' => $request->direccion,
                 'genero' => $request->genero,
@@ -59,9 +64,6 @@ class JWTController extends Controller
 
             // Asociar el cliente con el usuario
             $user->cliente()->save($cliente);
-
-            // Confirmar la transacción
-            DB::commit();
 
             return response()->json([
                 'status' => true,
@@ -71,9 +73,6 @@ class JWTController extends Controller
             ], 201);
 
         } catch (\Exception $e) {
-            // En caso de error, revertir la transacción y devolver un mensaje de error
-            DB::rollback();
-
             return response()->json([
                 'status' => false,
                 'message' => 'Error al registrar el cliente: ' . $e->getMessage()

@@ -32,19 +32,21 @@ Route::controller(UsuarioController::class)->group(function(){
 
 Route::get('/clientes', 'App\Http\Controllers\ClienteController@index');
 Route::post('/clientes', 'App\Http\Controllers\ClienteController@store');
-Route::get('/clientes/{ci}', 'App\Http\Controllers\ClienteController@show');
-Route::put('/clientes/{ci}', 'App\Http\Controllers\ClienteController@update');
-Route::delete('/clientes/{ci}', 'App\Http\Controllers\ClienteController@destroy');
+Route::get('/clientes/{id}', 'App\Http\Controllers\ClienteController@show');
+Route::put('/clientes/{id}', 'App\Http\Controllers\ClienteController@update');
+Route::delete('/clientes/{id}', 'App\Http\Controllers\ClienteController@destroy');
+
+Route::post('/register', [JWTController::class, 'register']);
+Route::post('/login', [JWTController::class, 'login']);
+Route::post('/logout', [JWTController::class, 'logout']);
+Route::post('/refresh', [JWTController::class, 'refreshToken']);
+Route::post('/profile', [JWTController::class, 'profile']);
 
 Route::group([
     'middleware' => 'api',
 ], function($router) {
 
-    Route::post('/register', [JWTController::class, 'register']);
-    Route::post('/login', [JWTController::class, 'login']);
-    Route::post('/logout', [JWTController::class, 'logout']);
-    Route::post('/refresh', [JWTController::class, 'refreshToken']);
-    Route::post('/profile', [JWTController::class, 'profile']);
+
 });
 
 Route::get('/vehiculos', 'App\Http\Controllers\VehiculoController@index');
