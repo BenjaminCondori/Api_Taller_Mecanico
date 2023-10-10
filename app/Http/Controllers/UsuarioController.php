@@ -63,7 +63,8 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        $usuario->name = $request->email;
+        
+        $usuario->email = $request->email;
         $usuario->password = $request->password;
         $usuario->save();
 
@@ -83,7 +84,7 @@ class UsuarioController extends Controller
         $usuario->delete();
         
         $data = [
-            'message' => 'Usuario modificado exitosamente',
+            'message' => 'Usuario eliminado exitosamente',
             'usuario' => $usuario
         ];
         return response()->json($data);

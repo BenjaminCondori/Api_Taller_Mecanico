@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\auth\JWTController;
-use App\Http\Controllers\MarcaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,24 +24,6 @@ Route::post('/usuarios', 'App\Http\Controllers\UsuarioController@store');
 Route::get('/usuarios/{usuario}', 'App\Http\Controllers\UsuarioController@show');
 Route::put('/usuarios/{usuario}', 'App\Http\Controllers\UsuarioController@update');
 Route::delete('/usuarios/{usuario}', 'App\Http\Controllers\UsuarioController@destroy');
-
-Route::get('/vehiculos', 'App\Http\Controllers\VehiculoController@index');
-Route::post('/vehiculos', 'App\Http\Controllers\VehiculoController@store');
-Route::get('/vehiculos/{vehiculo}', 'App\Http\Controllers\VehiculoController@show');
-Route::put('/vehiculos/{vehiculo}', 'App\Http\Controllers\VehiculoController@update');
-Route::delete('/vehiculos/{vehiculo}', 'App\Http\Controllers\VehiculoController@destroy');
-
-Route::get('/marca', 'App\Http\Controllers\MarcaController@index');
-Route::post('/marca','App\Http\Controllers\MarcaController@store');
-Route::get('/marca/{marca}', 'App\Http\Controllers\MarcaController@show');
-Route::put('/marca/{marca}', 'App\Http\Controllers\MarcaController@update');
-Route::delete('/marca/{marca}', 'App\Http\Controllers\MarcaController@destroy');
-
-Route::get('/modelo', 'App\Http\Controllers\ModeloController@index');
-Route::post('/modelo', 'App\Http\Controllers\ModeloController@store');
-Route::get('/modelo/{modelo}', 'App\Http\Controllers\ModeloController@show');
-Route::put('/modelo/{modelo}', 'App\Http\Controllers\ModeloController@update');
-Route::delete('/modelo/{modelo}', 'App\Http\Controllers\ModeloController@destroy');
 
 Route::get('/clientes', 'App\Http\Controllers\ClienteController@index');
 Route::post('/clientes', 'App\Http\Controllers\ClienteController@store');
