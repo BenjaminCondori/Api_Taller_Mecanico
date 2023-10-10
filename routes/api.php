@@ -46,3 +46,23 @@ Route::group([
     Route::post('/refresh', [JWTController::class, 'refreshToken']);
     Route::post('/profile', [JWTController::class, 'profile']);
 });
+
+Route::get('/vehiculos', 'App\Http\Controllers\VehiculoController@index');
+Route::post('/vehiculos', 'App\Http\Controllers\VehiculoController@store');
+Route::get('/vehiculos/{vehiculo}', 'App\Http\Controllers\VehiculoController@show');
+Route::put('/vehiculos/{vehiculo}', 'App\Http\Controllers\VehiculoController@update');
+Route::delete('/vehiculos/{vehiculo}', 'App\Http\Controllers\VehiculoController@destroy');
+
+Route::get('/marca', 'App\Http\Controllers\MarcaController@index');
+Route::post('/marca','App\Http\Controllers\MarcaController@store');
+Route::get('/marca/{marca}', 'App\Http\Controllers\MarcaController@show');
+Route::put('/marca/{marca}', 'App\Http\Controllers\MarcaController@update');
+Route::delete('/marca/{marca}', 'App\Http\Controllers\MarcaController@destroy');
+
+Route::get('/modelo', 'App\Http\Controllers\ModeloController@index');
+Route::post('/modelo', 'App\Http\Controllers\ModeloController@store');
+Route::get('/modelo/{modelo}', 'App\Http\Controllers\ModeloController@show');
+Route::put('/modelo/{modelo}', 'App\Http\Controllers\ModeloController@update');
+Route::delete('/modelo/{modelo}', 'App\Http\Controllers\ModeloController@destroy');
+
+
