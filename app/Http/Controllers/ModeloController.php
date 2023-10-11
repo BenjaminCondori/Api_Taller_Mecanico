@@ -28,11 +28,13 @@ class ModeloController extends Controller
 
         $modelo->save();
         $data = [
+            'status' => true,
             'message' => 'Modelo registrado satisfactoriamente',
             'Modelo' => $modelo
         ];
         return response()->json($data);
     }
+    
     public function show(modelo $modelo)
     {
         //

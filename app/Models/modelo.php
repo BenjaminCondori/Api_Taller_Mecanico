@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class modelo extends Model
 {
-    public $timestamps = false;
     use HasFactory;
+
     protected $fillable = [
         'nombre',
+        'marca_id'
     ];
+    
     public function marca(): BelongsTo
     {
         return $this->belongsTo(marca::class, 'marca_id');
