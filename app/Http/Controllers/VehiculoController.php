@@ -34,6 +34,9 @@ class VehiculoController extends Controller
         $vehiculo->nro_chasis = $request->nro_chasis;
         $vehiculo->año = $request->año;
         $vehiculo->color = $request->color;
+        $vehiculo->marca_id = $request->marca_id;
+        $vehiculo->modelo_id = $request->modelo_id;
+        $vehiculo->cliente_id = $request->cliente_id;
         $vehiculo->save();
         $data = [
             'message' => 'Vehiculo registrado satisfactoriamente',

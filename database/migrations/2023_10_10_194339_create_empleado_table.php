@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('empleado', function (Blueprint $table) {
+        Schema::create('empleados', function (Blueprint $table) {
             $table->id();
             $table->integer('ci')->unique();
             $table->string('nombre');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable(); // Asume que la columna de clave foránea se llama user_id
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('puesto_id'); // Clave foránea a la tabla "puesto"
-            $table->foreign('puesto_id')->references('id')->on('puesto');
+            $table->foreign('puesto_id')->references('id')->on('puestos');
             $table->timestamps();
         });
     }
