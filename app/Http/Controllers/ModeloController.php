@@ -13,16 +13,19 @@ class ModeloController extends Controller
         $modelo = modelo::all();
         return response()->json($modelo);
     }
+
     public function create()
     {
         //
     }
+
     public function store(Request $request)
     {
         //
         $modelo = new modelo();
         $modelo->nombre = $request->nombre;
         $modelo->marca_id = $request->marca_id;
+
         $modelo->save();
         $data = [
             'message' => 'Modelo registrado satisfactoriamente',
