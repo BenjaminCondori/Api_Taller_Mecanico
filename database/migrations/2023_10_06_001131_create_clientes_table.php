@@ -20,11 +20,11 @@ return new class extends Migration
             $table->char('genero', 1);
             $table->integer('telefono')->nulable();
             $table->string('direccion')->nulable();
-            $table->timestamps();
+            $table->timestamps(); 
 
             // Definir la clave foránea
-            $table->unsignedBigInteger('user_id')->nullable(); // Asume que la columna de clave foránea se llama user_id
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('usuario_id')->nullable(); // Asume que la columna de clave foránea se llama user_id
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
         });
     }
 

@@ -30,6 +30,7 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
+        //crea el nuevo usuario con los campos email y password que recibió
         $usuario = new Usuario();
         $usuario->email = $request->email;
         $usuario->password = $request->password;
@@ -63,7 +64,7 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        
+        //editar 
         $usuario->email = $request->email;
         $usuario->password = $request->password;
         $usuario->save();
@@ -81,6 +82,7 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
+        //destruir
         $usuario->delete();
         
         $data = [
