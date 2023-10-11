@@ -22,7 +22,7 @@ class ModeloController extends Controller
         //
         $modelo = new modelo();
         $modelo->nombre = $request->nombre;
-        
+        $modelo->marca_id = $request->marca_id;
         $modelo->save();
         $data = [
             'message' => 'Modelo registrado satisfactoriamente',

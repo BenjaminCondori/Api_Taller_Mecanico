@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Puesto extends Model
 {
     use HasFactory;
-    public function empleado(): HasMany
+    public function empleados(): HasMany
     {
         return $this->hasMany(Empleado::class, 'puesto_id');
     }

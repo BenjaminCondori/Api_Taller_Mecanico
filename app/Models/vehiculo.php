@@ -4,16 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class vehiculo extends Model
 {
     use HasFactory;
-    
+    public $timestamps = false;
     protected $fillable = [
         'placa',
         'nro_chasis',
         'año',
         'color',
+        'marca_id',
+        'modelo_id',
+        'cliente_id'
     ];
     
     public function marca(): BelongsTo

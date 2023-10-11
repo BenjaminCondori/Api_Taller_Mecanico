@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class marca extends Model
 {
@@ -17,7 +18,7 @@ class marca extends Model
     {
         return $this->hasMany(vehiculo::class, 'marca_id');
     }
-    public function modelo(): HasMany
+    public function modelos(): HasMany
     {
         return $this->hasMany(modelo::class, 'marca_id');
     }
