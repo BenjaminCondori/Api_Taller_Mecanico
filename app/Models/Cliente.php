@@ -23,7 +23,7 @@ class Cliente extends Model
     ];
 
     public function user(): BelongsTo {
-        return $this->BelongsTo(User::class, 'user_id');
+        return $this->BelongsTo(Usuario::class, 'usuario_id');
     }
 
 }

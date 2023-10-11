@@ -16,6 +16,6 @@ class Empleado extends Model
     }
     public function users(): HasOne
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(Usuario::class, 'usuario_id');
     }
 }

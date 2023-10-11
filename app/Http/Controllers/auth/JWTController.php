@@ -5,7 +5,7 @@ namespace App\Http\Controllers\auth;
 use App\Http\Controllers\Controller;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -42,7 +42,7 @@ class JWTController extends Controller
             }
 
             // Crea el usuario con la contraseña determinada
-            $user = User::create([
+            $user = Usuario::create([
                 'email' => $request->email,
                 'password' => $password
             ]);

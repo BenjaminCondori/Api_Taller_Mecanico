@@ -19,8 +19,8 @@ return new class extends Migration
             $table->char('genero', 1);
             $table->integer('telefono');
             $table->string('direccion');
-            $table->unsignedBigInteger('user_id')->nullable(); // Asume que la columna de clave foránea se llama user_id
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('usuario_id')->nullable(); // Asume que la columna de clave foránea se llama user_id
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->unsignedBigInteger('puesto_id'); // Clave foránea a la tabla "puesto"
             $table->foreign('puesto_id')->references('id')->on('puestos');
             $table->timestamps();

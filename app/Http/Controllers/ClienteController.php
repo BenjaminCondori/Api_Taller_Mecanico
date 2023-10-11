@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -52,7 +53,7 @@ class ClienteController extends Controller
         }
 
         // Crea el usuario con la contraseña determinada
-        $user = User::create([
+        $user = Usuario::create([
             'email' => $request->email,
             'password' => $password
         ]);
